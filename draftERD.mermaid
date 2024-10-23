@@ -1,0 +1,149 @@
+erDiagram
+
+MEMBER {
+    int MemberID PK
+    string Name
+    date DateOfBirth
+    string Gender
+    string Address
+    string PhoneNumber
+    string Email
+    string EmergencyContact
+    date StartDate
+    date EndDate
+    string MembershipType
+    string MembershipStatus
+}
+
+GUEST {
+    int GuestID PK
+    int MemberID FK
+    string Name
+    string ContactInfo
+    string RelationshipWithMember
+}
+
+FACILITY {
+    int FacilityID PK
+    string Name
+    string Location
+}
+
+EQUIPMENT {
+    int EquipmentID PK
+    int FacilityID FK
+    string Model
+    string SerialNumber
+    string MaintenanceSchedule
+}
+
+FITNESSCLASS {
+    int ClassID PK
+    int InstructorID FK
+    string Name
+    string Type
+    string Schedule
+    int MaxCapacity
+}
+
+INSTRUCTOR {
+    int InstructorID PK
+    string Name
+    string PhoneNumber
+    string Email
+    string Position
+    float Salary
+}
+
+TRAINER {
+    int TrainerID PK
+    string Name
+    string PhoneNumber
+    string Email
+    string Specialization
+    float Salary
+}
+
+PERSONALTRAININGSESSION {
+    int SessionID PK
+    int MemberID FK
+    int TrainerID FK
+    date Date
+    time Time
+    int Duration
+    string Status
+}
+
+WORKOUTPLAN {
+    int PlanID PK
+    int SessionID FK
+    string Exercises
+    int Sets
+    int Reps
+    float Weight
+}
+
+HEALTHASSESSMENT {
+    int AssessmentID PK
+    int MemberID FK
+    int TrainerID FK
+    date Date
+    float Weight
+    float BMI
+    float BodyFatPercentage
+    string FitnessGoals
+}
+
+PAYMENT {
+    int PaymentID PK
+    int MemberID FK
+    float TotalAmount
+    date Date
+    string PaymentMethod
+    string Status
+}
+
+MEMBERSHIPPLAN {
+    int PlanID PK
+    string Name
+    string Benefits
+    float Price
+}
+
+CLASSBOOKING {
+    int BookingID PK
+    int MemberID FK
+    int ClassID FK
+    string Status
+}
+
+CHECKIN {
+    int CheckInID PK
+    int MemberID FK
+    int FacilityID FK
+    int GuestID FK
+    time CheckInTime
+    time CheckOutTime
+}
+
+PROMOTION {
+    int PromotionID PK
+    string DiscountCode
+    string Description
+    string ValidityPeriod
+    float DiscountAmount
+}
+
+%% Relationships
+
+MEMBER ||--o{ GUEST : "has"
+MEMBER ||--o{ CLASSBOOKING : "books"
+MEMBER ||--o{ PERSONALTRAININGSESSION : "has"
+MEMBER ||--o{ PAYMENT : "makes"
+MEMBER ||--o{ CHECKIN : "uses"
+MEMBER ||--o{ HEALTHASSESSMENT : "undergoes"
+FACILITY ||--o{ EQUIPMENT : "contains"
+FITNESSCLASS ||--o| INSTRUCTOR : "conducted by"
+TRAINER ||--o{ PERSONALTRAININGSESSION : "leads"
+TRAINER ||--o{ HEALTHASSESSMENT : "performs"
+CHECKIN }|--|| GUEST : "with"
