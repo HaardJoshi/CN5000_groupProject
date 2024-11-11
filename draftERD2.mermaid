@@ -1,0 +1,162 @@
+erDiagram
+    CLIENTS_GUESTS {
+        NUMBER guest_id PK
+        NUMBER member_id FK
+        VARCHAR f_name
+        VARCHAR l_name
+        VARCHAR address
+        VARCHAR relation
+        NUMBER contact_no
+    }
+    EQUIPMENT_RENTAL {
+        NUMBER equipment_id PK
+        VARCHAR eq_model
+        NUMBER price
+        NUMBER serial_number
+        VARCHAR maintenance_schedule
+    }
+    FITNESS_CENTRE {
+        NUMBER centre_id PK
+        VARCHAR f_name
+        VARCHAR l_name
+        VARCHAR c_location
+        VARCHAR facility
+    }
+    FITNESS_CLASS {
+        NUMBER class_id PK
+        NUMBER centre_id FK
+        NUMBER staff_id FK
+        VARCHAR fitness_class_type
+        TIMESTAMP duration
+        NUMBER workout_id FK
+    }
+    GYM_ATTENDANCE {
+        NUMBER member_id PK, FK
+        DATE check_in PK
+        DATE check_out
+        NUMBER centre_id FK
+        NUMBER guest_id FK
+    }
+    HEALTH_ASSESSMENTS {
+        NUMBER assessment_id PK
+        NUMBER weight
+        DATE assessment_date
+        NUMBER bmi
+    }
+    INVOICES {
+        NUMBER invoice_id PK
+        VARCHAR payment_id FK
+        NUMBER promotion_id FK
+        NUMBER equipment_id FK
+        VARCHAR services
+    }
+    MEMBERS {
+        NUMBER member_id PK
+        NUMBER plan_id FK
+        VARCHAR fname
+        VARCHAR lname
+        VARCHAR address
+        CHAR sex
+        VARCHAR email
+        NUMBER contact
+        NUMBER emergency_contact
+    }
+    MEMBERSHIP {
+        NUMBER membership_id PK
+        NUMBER plan_id FK
+        DATE start_date
+        DATE end_date
+        NUMBER status
+    }
+    MEMBERSHIP_PLANS {
+        NUMBER plan_id PK
+        VARCHAR plan_name
+        VARCHAR benefits
+        DATE renewal_date
+        NUMBER price
+    }
+    PAYMENTS {
+        NUMBER payment_id PK
+        NUMBER member_id FK
+        NUMBER amount
+        DATE payment_date
+        VARCHAR payment_method
+    }
+    PERSONAL_TRAINING_SESSIONS {
+        NUMBER session_id PK
+        TIMESTAMP date_time
+        INTERVAL duration
+        NUMBER trainer_id FK
+        NUMBER member_id FK
+        VARCHAR session_status
+        NUMBER workout_id FK
+    }
+    PROMOTIONS {
+        NUMBER promotion_id PK
+        VARCHAR p_type
+        NUMBER discount
+    }
+    STAFF {
+        NUMBER staff_id PK
+        VARCHAR first_name
+        VARCHAR last_name
+        VARCHAR sex
+        VARCHAR address
+        VARCHAR role
+        VARCHAR email
+        NUMBER contact_number
+        NUMBER emergency_contact
+        NUMBER salary
+    }
+    WORKOUT_PLANS {
+        NUMBER workout_plan_id PK
+        NUMBER member_id FK
+        NUMBER staff_id FK
+        NUMBER centre_id FK
+        NUMBER assessment_id FK
+        DATE plan_date
+        TIMESTAMP plan_time
+        VARCHAR exercise
+        NUMBER workout_reps
+        NUMBER workout_sets
+    }
+    WORKSHOPS {
+        NUMBER workshop_id PK
+        NUMBER member_id FK
+        NUMBER instructor_id FK
+        VARCHAR centre_id FK
+        DATE workshop_date
+    }
+
+    MEMBERS }|--|| MEMBERSHIP : "has"
+    MEMBERS }|--o| CLIENTS_GUESTS : "hosts"
+    MEMBERS }|--o| GYM_ATTENDANCE : "records attendance"
+    MEMBERS ||--o{ PAYMENTS : "makes"
+    MEMBERS ||--o{ PERSONAL_TRAINING_SESSIONS : "attends"
+    MEMBERS ||--o{ WORKOUT_PLANS : "follows"
+    MEMBERS ||--o{ WORKSHOPS : "participates in"
+
+    MEMBERSHIP ||--o| MEMBERSHIP_PLANS : "uses"
+    MEMBERSHIP_PLANS ||--o{ MEMBERSHIP : "defines"
+
+    CLIENTS_GUESTS ||--o| MEMBERS : "relates to"
+    FITNESS_CENTRE ||--o{ FITNESS_CLASS : "offers"
+    FITNESS_CENTRE ||--o{ WORKOUT_PLANS : "provides facilities for"
+    FITNESS_CENTRE ||--o{ WORKSHOPS : "conducts"
+
+    EQUIPMENT_RENTAL ||--o{ INVOICES : "rents"
+    INVOICES ||--o| PAYMENTS : "has payment"
+    INVOICES ||--o| PROMOTIONS : "uses"
+    PAYMENTS ||--o{ INVOICES : "is for"
+    
+    PERSONAL_TRAINING_SESSIONS ||--o| STAFF : "instructed by"
+    PERSONAL_TRAINING_SESSIONS ||--o| WORKOUT_PLANS : "follows"
+
+    FITNESS_CLASS ||--o| STAFF : "led by"
+    FITNESS_CLASS ||--o| WORKOUT_PLANS : "uses plan"
+
+    WORKOUT_PLANS ||--o| HEALTH_ASSESSMENTS : "based on assessment"
+    
+    WORKSHOPS ||--o| STAFF : "led by"
+    WORKSHOPS ||--o| FITNESS_CENTRE : "held at"
+    
