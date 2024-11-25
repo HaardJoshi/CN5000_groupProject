@@ -116,3 +116,23 @@ CREATE TABLE Equipment_Rentals (
     Return_Date DATE,
     Maintenance_Schedule DATE
 );
+
+-- Modifications:
+
+-- Step 7: Create Discount_Usage table
+-- Purpose: Track when and how discounts are used, maintaining audit trails.
+CREATE TABLE Discount_Usage (
+    Usage_ID INT PRIMARY KEY AUTO_INCREMENT, -- Unique identifier for discount usage.
+    Discount_ID INT NOT NULL,                -- Discount being used.
+    Billing_ID INT NOT NULL,                 -- The billing record associated with the discount.
+    Client_ID INT NOT NULL,                  -- Client who used the discount.
+    Date DATE NOT NULL,                      -- Date when the discount was applied.
+    FOREIGN KEY (Discount_ID) REFERENCES Discounts(Discount_ID), -- Links to master Discounts table.
+    FOREIGN KEY (Billing_ID) REFERENCES Billing(Billing_ID),     -- Links to the specific billing record.
+    FOREIGN KEY (Client_ID) REFERENCES Clients(Client_ID)        -- Links to the client who used the discount.
+);
+
+-- Comments:
+-- Adding Facility_ID to Fitness_Classes and Gym_Attendance allows tracking of which facility is involved in those activities.
+-- Adding Discount_ID to Billing ensures that discount usage is tied directly to financial transactions.
+-- The Discount_Usage table enables detailed tracking of when, where, and by whom discounts are applied, supporting better analytics and auditing.
