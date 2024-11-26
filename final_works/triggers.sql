@@ -33,6 +33,10 @@ BEGIN
     INTO client_category
     FROM Clients
     WHERE Client_ID = :NEW.Client_ID;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20003, 'Client ID does not exist in the Clients table.');
+END;
 
     -- Raise an error if the client is a guest
     IF client_category = 'Guest' THEN
