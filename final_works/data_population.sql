@@ -76,10 +76,10 @@ INSERT INTO Membership (Membership_ID, Client_ID, Plan_Type, Start_Date, End_Dat
 
 -- DISCOUNTS
 
-INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (8232, 'Referral', '8702098708', 0, 0.0);
-INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (4896, 'Promotion 1', '7245864374', 0, 0.0);
-INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (7207, 'Promotion 2', '7550696607', 0, 0.0);
-INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (2995, 'Promotion 3', '8174809847', 0, 0.0);
+INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (8232, 'Diwali Promotion', 'DIWALI2025', 0, 0.0);
+INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (4896, 'New Year Promotion', 'NEWYEAR2025', 0, 0.0);
+INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (7207, 'Christmas Promotion', 'CHRISTMAS2024', 0, 0.0);
+INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (2995, 'Summer Promotion', 'SUMMER2025', 0, 0.0);
 
 -- Personal_Training_Sessions
 
@@ -114,29 +114,29 @@ INSERT INTO Health_Assessments (Assessment_ID, Client_ID, Trainer_ID, Assessment
 
 -- GYM ATTENDANCE
 
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (6926, 8781, 2024-11-22 07:02:57.435897, 2024-11-14 01:20:53.440330, 7885);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (9200, 6932, 2024-11-19 13:38:41.727280, 2024-11-01 04:10:47.241966, 7885);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (1474, 3483, 2024-11-22 11:46:56.888915, 2024-11-02 06:22:37.918728, 7885);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (7489, 5093, 2024-11-05 10:26:16.862931, 2024-11-13 16:10:35.870010, 6771);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (5675, 8924, 2024-11-20 14:43:49.943554, 2024-11-04 23:12:27.596241, 4831);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (2100, 3483, 2024-11-06 23:19:14.789033, 2024-11-21 11:18:34.897298, 6771);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (9147, 6932, 2024-11-22 03:51:27.429627, 2024-11-11 21:16:51.440503, 7885);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (5180, 5093, 2024-11-01 04:52:15.500492, 2024-11-19 08:40:06.040502, 6094);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (4998, 8346, 2024-11-04 04:57:25.899846, 2024-11-24 10:14:59.571233, 4831);
-INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (6797, 8368, 2024-11-09 01:26:25.559764, 2024-11-12 04:53:27.508097, 6428);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (6926, 8781, 2024-11-22 07:02:57.435897, 2024-11-22 09:20:53.440330, 7885);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (9200, 6932, 2024-11-19 13:38:41.727280, 2024-11-19 14:10:47.241966, 7885);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (1474, 3483, 2024-11-22 11:46:56.888915, 2024-11-22 16:22:37.918728, 7885);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (7489, 5093, 2024-11-05 10:26:16.862931, 2024-11-05 16:10:35.870010, 6771);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (5675, 8924, 2024-11-20 14:43:49.943554, 2024-11-20 23:12:27.596241, 4831);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (2100, 3483, 2024-11-06 09:19:14.789033, 2024-11-06 11:18:34.897298, 6771);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (9147, 6932, 2024-11-22 03:51:27.429627, 2024-11-22 05:16:51.440503, 7885);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (5180, 5093, 2024-11-01 04:52:15.500492, 2024-11-01 08:40:06.040502, 6094);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (4998, 8346, 2024-11-04 04:57:25.899846, 2024-11-04 10:14:59.571233, 4831);
+INSERT INTO Gym_Attendance (Attendance_ID, Client_ID, Check_in, Check_out, Facility_ID) VALUES (6797, 8368, 2024-11-09 01:26:25.559764, 2024-11-09 04:53:27.508097, 6428);
 
 -- EQUIPMENT RENTALS
 
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5234, 6771, 284, 'Dumbbells', 8781, 2024-05-14, 2024-03-03, 2024-03-26);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (8904, 7885, 886, 'Barbells', 7175, 2024-11-23, 2024-06-15, 2024-06-29);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (2964, 6428, 461, 'Pull-up Bars', 5422, 2024-03-26, 2024-03-01, 2024-09-14);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (4356, 6094, 733, 'Resistance Bands', 6056, 2024-09-22, 2024-01-07, 2024-01-13);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (8126, 7885, 750, 'Medicine Balls', 8346, 2024-07-25, 2024-09-11, 2024-02-16);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (6566, 6428, 698, 'Treadmill', 9309, 2024-10-17, 2024-10-17, 2024-10-18);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (9910, 6094, 369, 'Barbells', 6932, 2024-09-05, 2024-01-24, 2024-11-23);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5892, 6094, 405, 'Elliptical', 8368, 2024-04-26, 2024-02-17, 2024-03-22);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (2557, 6094, 539, 'Barbells', 8346, 2024-03-07, 2024-11-19, 2024-08-23);
-INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5246, 4831, 789, 'Pull-up Bars', 6056, 2024-10-26, 2024-05-07, 2024-08-07);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5234, 6771, 284, 'Dumbbells', 8781, 2024-05-14, 2024-05-23, 2025-03-26);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (8904, 7885, 886, 'Barbells', 7175, 2024-11-23, 2024-11-25, 2025-06-29);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (2964, 6428, 461, 'Pull-up Bars', 5422, 2024-03-26, 2024-03-31, 2025-09-14);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (4356, 6094, 733, 'Resistance Bands', 6056, 2024-09-22, 2024-09-27, 2025-01-13);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (8126, 7885, 750, 'Medicine Balls', 8346, 2024-07-25, 2024-08-11, 2025-02-16);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (6566, 6428, 698, 'Treadmill', 9309, 2024-10-17, 2024-10-18, 2025-10-18);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (9910, 6094, 369, 'Barbells', 6932, 2024-09-05, 2024-09-24, 2025-11-23);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5892, 6094, 405, 'Elliptical', 8368, 2024-04-26, 2024-04-27, 2025-03-22);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (2557, 6094, 539, 'Barbells', 8346, 2024-03-07, 2024-03-19, 2025-08-23);
+INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5246, 4831, 789, 'Pull-up Bars', 6056, 2024-10-26, 2024-11-29, 2025-08-07);
 
 -- CLASS BOOKINGS
 
