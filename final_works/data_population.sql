@@ -45,16 +45,16 @@ INSERT INTO Facilities (Facility_ID, Facility_Name, Facility_Location) VALUES (6
 
 -- FITNESS CLASSES
 
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (7133, 'AMRAP', 'Strength Training', 2024-11-15 13:50:40.185346, 2566, 20);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (7425, 'HIIT', 'Strength Training', 2024-11-02 07:08:31.331759, 2235, 19);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (9167, 'Bodyweight', 'Core Exercises', 2024-11-06 01:29:52.499739, 6369, 15);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (3990, 'Bodyweight', 'Core Exercises', 2024-11-25 19:16:43.517413, 6369, 22);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (9232, 'AMRAP', 'Core Exercises', 2024-11-09 18:45:49.526643, 2235, 17);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (5972, 'Bodyweight', 'Strength Training', 2024-11-04 10:44:54.884069, 2566, 25);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (5995, 'TRX', 'Strength Training', 2024-11-18 09:24:29.094006, 2688, 13);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (6383, 'Cardio', 'Flexibility and Stretching', 2024-11-09 23:28:07.125901, 4465, 26);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (7637, 'Bodyweight', 'Core Exercises', 2024-11-16 11:33:30.051651, 4465, 30);
-INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Max_Capacity) VALUES (9129, 'Cardio', 'Balance Training', 2024-11-11 13:56:37.531359, 4809, 13);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (7133, 'AMRAP', 'Strength Training', 2024-11-15 13:50:40.185346, 2566, 20);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (7425, 'HIIT', 'Strength Training', 2024-11-02 07:08:31.331759, 2235, 19);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (9167, 'Bodyweight', 'Core Exercises', 2024-11-06 01:29:52.499739, 6369, 15);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (3990, 'Bodyweight', 'Core Exercises', 2024-11-25 19:16:43.517413, 6369, 22);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (9232, 'AMRAP', 'Core Exercises', 2024-11-09 18:45:49.526643, 2235, 17);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (5972, 'Bodyweight', 'Strength Training', 2024-11-04 10:44:54.884069, 2566, 25);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (5995, 'TRX', 'Strength Training', 2024-11-18 09:24:29.094006, 2688, 13);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (6383, 'Cardio', 'Flexibility and Stretching', 2024-11-09 23:28:07.125901, 4465, 26);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (7637, 'Bodyweight', 'Core Exercises', 2024-11-16 11:33:30.051651, 4465, 30);
+INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots) VALUES (9129, 'Cardio', 'Balance Training', 2024-11-11 13:56:37.531359, 4809, 13);
 
 -- MEMBERSHIP
 
@@ -81,23 +81,23 @@ INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, R
 INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (7207, 'Promotion 2', '7550696607', 0, 0.0);
 INSERT INTO Discounts (Discount_ID, Discount_Type, Discount_Code, Usage_Count, Revenue_Loss) VALUES (2995, 'Promotion 3', '8174809847', 0, 0.0);
 
--- TRAINING
+-- Personal_Training_Sessions
 
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (4160, 7548, 5884, 2024-10-06 08:26:19.371039, 'Inventore blanditiis veniam laborum dolores repellat. Tempore aperiam iusto repellat adipisci.
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (4160, 7548, 5884, 2024-10-06 08:26:19.371039, 'Inventore blanditiis veniam laborum dolores repellat. Tempore aperiam iusto repellat adipisci.
 Perferendis est similique sapiente ipsa eius. Doloremque magni sapiente nesciunt.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (5787, 6056, 5884, 2024-02-02 04:31:28.940516, 'Porro consequatur dolore doloremque eveniet consectetur. Nulla ad alias repellendus.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (1810, 3483, 2235, 2024-09-27 17:07:43.451183, 'Provident sint tempora maiores nam aliquam est. Dolore reiciendis explicabo quidem accusamus ullam qui ut.
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (5787, 6056, 5884, 2024-02-02 04:31:28.940516, 'Porro consequatur dolore doloremque eveniet consectetur. Nulla ad alias repellendus.');
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (1810, 3483, 2235, 2024-09-27 17:07:43.451183, 'Provident sint tempora maiores nam aliquam est. Dolore reiciendis explicabo quidem accusamus ullam qui ut.
 Error voluptatibus ullam corporis excepturi esse blanditiis.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (4917, 3483, 6369, 2024-01-16 19:50:11.078377, 'Sed sed quod animi. Neque tempora tempora quis et iste.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (8184, 1987, 2688, 2024-09-03 23:45:02.549771, 'Ipsum doloribus nam id. Officiis sequi soluta eius quisquam.
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (4917, 3483, 6369, 2024-01-16 19:50:11.078377, 'Sed sed quod animi. Neque tempora tempora quis et iste.');
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (8184, 1987, 2688, 2024-09-03 23:45:02.549771, 'Ipsum doloribus nam id. Officiis sequi soluta eius quisquam.
 Aliquam totam numquam ratione.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (8750, 7548, 2878, 2024-07-23 06:01:22.345548, 'Recusandae quasi perferendis sint. Perferendis nam deserunt. Fugiat laudantium facere eveniet.
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (8750, 7548, 2878, 2024-07-23 06:01:22.345548, 'Recusandae quasi perferendis sint. Perferendis nam deserunt. Fugiat laudantium facere eveniet.
 Excepturi maiores placeat dolore. Alias incidunt nisi soluta maxime. Quo explicabo aperiam rerum.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (5753, 1489, 4809, 2024-02-19 03:27:35.152006, 'Quia blanditiis recusandae quis. Molestias architecto optio enim id iusto. Incidunt nisi voluptatem quisquam aliquid cupiditate iste.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (2348, 5422, 2336, 2024-05-29 10:30:59.658912, 'Vero ducimus illum labore veritatis dolorum ipsam. Sequi aut illo temporibus. A incidunt voluptatem expedita tempore occaecati earum.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (8702, 2860, 2336, 2024-01-21 05:17:05.909359, 'Aperiam voluptatibus numquam corrupti. Amet ratione id in dolorum. Repudiandae iure voluptatibus a doloribus optio.
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (5753, 1489, 4809, 2024-02-19 03:27:35.152006, 'Quia blanditiis recusandae quis. Molestias architecto optio enim id iusto. Incidunt nisi voluptatem quisquam aliquid cupiditate iste.');
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (2348, 5422, 2336, 2024-05-29 10:30:59.658912, 'Vero ducimus illum labore veritatis dolorum ipsam. Sequi aut illo temporibus. A incidunt voluptatem expedita tempore occaecati earum.');
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (8702, 2860, 2336, 2024-01-21 05:17:05.909359, 'Aperiam voluptatibus numquam corrupti. Amet ratione id in dolorum. Repudiandae iure voluptatibus a doloribus optio.
 Commodi ipsa veniam facilis. Possimus in voluptatibus tempore.');
-INSERT INTO Training (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (3852, 7175, 2336, 2024-10-17 05:45:58.464891, 'Non eum iste nesciunt voluptates non deleniti. Quo quaerat recusandae ipsam alias deleniti. Animi deleniti quod modi officia nulla ipsa.');
+INSERT INTO Personal_Training_Sessions (Training_ID, Client_ID, Trainer_ID, Session_Schedule, Workout_Details) VALUES (3852, 7175, 2336, 2024-10-17 05:45:58.464891, 'Non eum iste nesciunt voluptates non deleniti. Quo quaerat recusandae ipsam alias deleniti. Animi deleniti quod modi officia nulla ipsa.');
 
 -- HEALTH ASSESSMENTS
 
