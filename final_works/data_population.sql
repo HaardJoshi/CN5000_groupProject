@@ -137,3 +137,39 @@ INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_
 INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5892, 6094, 405, 'Elliptical', 8368, 2024-04-26, 2024-02-17, 2024-03-22);
 INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (2557, 6094, 539, 'Barbells', 8346, 2024-03-07, 2024-11-19, 2024-08-23);
 INSERT INTO Equipment_Rentals (Rental_ID, Facility_ID, Equipment_SNo, Equipment_Model, Client_ID, Rental_Date, Return_Date, Maintenance_Schedule) VALUES (5246, 4831, 789, 'Pull-up Bars', 6056, 2024-10-26, 2024-05-07, 2024-08-07);
+
+-- CLASS BOOKINGS
+
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (9038, 7311, 8054, 'Waitlisted');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (5067, 9053, 7274, 'Canceled');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (7443, 5530, 8707, 'Waitlisted');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (8097, 1969, 9665, 'Waitlisted');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (9430, 7311, 5677, 'Canceled');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (2931, 7907, 8306, 'Canceled');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (6819, 7311, 9080, 'Canceled');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (4437, 4773, 8306, 'Confirmed');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (1591, 4773, 7689, 'Confirmed');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (3521, 9846, 9957, 'Canceled');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (9160, 7311, 7658, 'Confirmed');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (7699, 4773, 7689, 'Waitlisted');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (5134, 1216, 5677, 'Confirmed');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (3829, 5530, 9080, 'Canceled');
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status) VALUES (3697, 4773, 8054, 'Canceled');
+
+-- BILLING
+
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (4358, 111292, 9981, 205.49, 2024-10-19 23:26:23.961062, 'Direct Debit', 'CONFIRMED', 'N', 0.0, None);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (4116, 492863, 4281, 327.06, 2024-01-16 05:40:40.296552, 'Debit Card', 'PENDING', 'N', 0.0, None);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (1326, None, 7658, 48.23, 2024-06-27 02:37:30.343873, 'Cash', 'PENDING', 'Y', 23.12, 3375);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (2335, 829094, 7274, 468.03, 2024-10-01 12:13:57.288428, 'Direct Debit', 'CONFIRMED', 'N', 0.0, None);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (7125, None, 8306, 273.77, 2024-06-29 00:37:30.634432, 'Debit Card', 'CONFIRMED', 'Y', 6.22, 3375);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (8160, 663603, 7274, 167.98, 2024-09-13 01:46:13.357377, 'Credit Card', 'PENDING', 'N', 0.0, None);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (7645, None, 7524, 484.53, 2024-07-15 02:00:23.478838, 'Direct Debit', 'PENDING', 'Y', 35.15, 8475);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (3378, 146647, 4281, 13.67, 2024-09-18 01:50:21.298339, 'Debit Card', 'CONFIRMED', 'N', 0.0, None);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (2161, None, 9981, 379.03, 2024-07-21 09:47:20.359093, 'Cash', 'PENDING', 'Y', 21.06, 8475);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (9796, None, 5530, 98.14, 2024-06-12 18:57:51.510864, 'Direct Debit', 'PENDING', 'Y', 4.02, 6846);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (7122, 238183, 5677, 157.5, 2024-02-05 16:50:17.728381, 'Cash', 'PENDING', 'N', 0.0, None);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (9165, None, 8306, 494.28, 2024-08-18 13:06:26.930029, 'Cash', 'PENDING', 'Y', 59.66, 6846);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (6859, None, 1629, 31.61, 2024-11-25 14:19:58.805352, 'Credit Card', 'CONFIRMED', 'Y', 54.16, 8475);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (3100, 686411, 4281, 485.09, 2024-02-26 20:27:23.320992, 'Credit Card', 'CONFIRMED', 'N', 0.0, None);
+INSERT INTO Billing (Billing_ID, Transaction_ID, Client_ID, Amount, Billing_Date_Time, Payment_Method, Payment_Status, Discount_Applied, Discount_Amount, Discount_ID) VALUES (9634, None, 8306, 74.4, 2024-10-17 10:51:24.769523, 'Credit Card', 'PENDING', 'Y', 27.97, 1820);
