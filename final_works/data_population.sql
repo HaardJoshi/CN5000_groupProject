@@ -24,16 +24,16 @@ INSERT INTO Clients (Client_ID, First_Name, Last_Name, Client_Category, Relation
 
 -- STAFF
 
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (4465, 'Jamie', 'Williams', 'Instructor', 'Strength', '+44(0)28 9018764', '+44(0)2074960752', 48778.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (9666, 'Elaine', 'Quinn', 'Instructor', 'Flexibility', '+44(0)808 157 0933', '+44(0)20 7496 0791', 28765.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2336, 'Jeremy', 'Smith', 'Instructor', 'Strength', '+44(0)131 4960378', '+441632 960 987', 31755.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (4809, 'Sharon', 'Jarvis', 'Trainer', 'Flexibility', '0113 4960906', '+44(0)1174960681', 49190.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (6369, 'Owen', 'Reynolds', 'Instructor', 'Strength', '+441184960716', '+4420 74960855', 35325.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2235, 'Douglas', 'Potter', 'Trainer', 'Flexibility', '+449098790751', '(0141) 4960712', 28310.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (5884, 'Brett', 'Jones', 'Trainer', 'Cardio', '+44(0)306 9990830', '+44118 4960802', 45890.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2688, 'Lydia', 'Pearson', 'Trainer', 'Cardio', '0141 4960930', '+44116 496 0374', 43220.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2566, 'Adrian', 'Powell', 'Trainer', 'Strength', '(0115) 4960112', '+442074960110', 20035.00);
-INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2878, 'Katie', 'Brown', 'Trainer', 'Flexibility', '+44(0)8081570037', '+44113 496 0239', 35195.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (4465, 'Jamie', 'Williams', 'Instructor', 'Strength', '+44289018764', '+442074960752', 48778.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (9666, 'Elaine', 'Quinn', 'Instructor', 'Flexibility', '+448081570933', '+4420749 0791', 28765.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2336, 'Jeremy', 'Smith', 'Instructor', 'Strength', '+441314960378', '+441632960987', 31755.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (4809, 'Sharon', 'Jarvis', 'Trainer', 'Flexibility', '+441134960906', '+441174960681', 49190.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (6369, 'Owen', 'Reynolds', 'Instructor', 'Strength', '+441184960716', '+442074960855', 35325.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2235, 'Douglas', 'Potter', 'Trainer', 'Flexibility', '+449098790751', '+441414960712', 28310.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (5884, 'Brett', 'Jones', 'Trainer', 'Cardio', '+443069990830', '+441184960802', 45890.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2688, 'Lydia', 'Pearson', 'Trainer', 'Cardio', '+441414960930', '+441164960374', 43220.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2566, 'Adrian', 'Powell', 'Trainer', 'Strength', '+441154960112', '+442074960110', 20035.00);
+INSERT INTO Staff (Staff_ID, First_Name, Last_Name, Staff_Role, Specialization, Contact, Emergency_Contact, Salary) VALUES (2878, 'Katie', 'Brown', 'Trainer', 'Flexibility', '+448081570037', '+441134960239', 35195.00);
 
 -- FACILITIES
 
