@@ -20,30 +20,42 @@ BEGIN
 END;
 /
 
--- Trigger: Prevent guests from being billed
-
 CREATE OR REPLACE TRIGGER trg_check_billing_client
 BEFORE INSERT OR UPDATE ON Billing
 FOR EACH ROW
 DECLARE
     client_category VARCHAR2(10);
 BEGIN
-    -- Fetch the client category from the Clients table
-    SELECT Client_Category
-    INTO client_category
-    FROM Clients
-    WHERE Client_ID = :NEW.Client_ID;
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-        RAISE_APPLICATION_ERROR(-20003, 'Client ID does not exist in the Clients table.');
-END;
+    -- Skip validation for pending transactions and pending direct debits
+    IF :NEW.Payment_Status = 'PENDING' THEN
+        IF :NEW.Payment_Method = 'Direct Debit' OR :NEW.Payment_Method IS NULL THEN
+            RETURN; -- Allow NULL Client_ID for pending direct debits
+        END IF;
+    END IF;
 
-    -- Raise an error if the client is a guest
-    IF client_category = 'Guest' THEN
-        RAISE_APPLICATION_ERROR(-20002, 'Guests cannot be billed.');
+    -- Validate Client_ID if not NULL
+    IF :NEW.Client_ID IS NOT NULL THEN
+        BEGIN
+            SELECT Client_Category
+            INTO client_category
+            FROM Clients
+            WHERE Client_ID = :NEW.Client_ID;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                RAISE_APPLICATION_ERROR(-20003, 'Client ID does not exist in the Clients table.');
+        END;
+
+        -- Raise an error if the client is a guest
+        IF client_category = 'Guest' THEN
+            RAISE_APPLICATION_ERROR(-20002, 'Guests cannot be billed.');
+        END IF;
+    ELSE
+        -- Raise an error if Client_ID is NULL for non-pending transactions
+        RAISE_APPLICATION_ERROR(-20004, 'Client ID cannot be NULL for confirmed transactions.');
     END IF;
 END;
 /
+
 
 
 -- Trigger: Assign default Transaction_ID for cash payments
