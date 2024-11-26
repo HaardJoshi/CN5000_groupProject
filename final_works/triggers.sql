@@ -18,7 +18,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20001, 'Guests cannot have memberships.');
     END IF;
 END;
-
+/
 
 -- Trigger: Prevent guests from being billed
 
@@ -39,6 +39,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20002, 'Guests cannot be billed.');
     END IF;
 END;
+/
 
 
 -- Trigger: Assign default Transaction_ID for cash payments
@@ -53,6 +54,7 @@ BEGIN
         :NEW.Transaction_ID := -1;
     END IF;
 END;
+/
 
 
 -- Trigger: Update discount usage and revenue loss in Discounts table
@@ -70,6 +72,7 @@ BEGIN
         WHERE Discount_ID = :NEW.Discount_ID;
     END IF;
 END;
+/
 
 
 -- Trigger: Ensure Discount_Amount does not exceed £70
@@ -84,6 +87,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20003, 'Discount amount cannot exceed £70.');
     END IF;
 END;
+/
 
 
 -- Trigger: Validate Membership Start_Date and End_Date
@@ -98,6 +102,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20004, 'End_Date must be later than Start_Date.');
     END IF;
 END;
+/
 
 
 -- Trigger: Mark Membership as Inactive when End_Date passes
@@ -114,6 +119,7 @@ BEGIN
         WHERE Membership_ID = :NEW.Membership_ID;
     END IF;
 END;
+/
 
 
 -- Trigger: Update Available_Slots based on Class_Bookings
@@ -160,6 +166,7 @@ BEGIN
         WHERE Class_ID = :NEW.Class_ID;
     END IF;
 END;
+/
 
 
 -- Trigger: Prevent Membership or Classes with Past Dates
@@ -177,6 +184,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20008, 'End_Date cannot be in the past.');
     END IF;
 END;
+/
 
 
 -- Trigger: Prevent duplicate bookings for the same class
@@ -199,6 +207,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20009, 'Client has already confirmed this class.');
     END IF;
 END;
+/
 
 
 -- Trigger: Ensure valid Trainer assignments
@@ -221,6 +230,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20010, 'Invalid Trainer_ID: No such trainer exists.');
     END IF;
 END;
+/
 
 
 -- Trigger: Prevent schedule conflicts for instructors
@@ -244,3 +254,4 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20011, 'Instructor has a scheduling conflict.');
     END IF;
 END;
+/
