@@ -175,6 +175,17 @@ BEGIN
 END trg_decrease_slots_on_confirm;
 /
 
+-- Trigger to increment gym_visits every time the client registers check_in in gym_attendance
+CREATE OR REPLACE TRIGGER IncrementGymVisits
+AFTER INSERT ON Gym_Attendance
+FOR EACH ROW
+BEGIN
+    -- Update the Gym_Visits column in the Clients table
+    UPDATE Clients
+    SET Gym_Visits = Gym_Visits + 1
+    WHERE Client_ID = :NEW.Client_ID;
+END;
+/
 
 -- Trigger to prevent class booking if client's membership is inactive
 -- CREATE OR REPLACE TRIGGER prevent_class_booking_inactive_membership
