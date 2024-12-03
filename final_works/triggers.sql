@@ -10,9 +10,13 @@ BEGIN
     IF :NEW.End_Date <= TRUNC(SYSDATE) THEN
         -- Set the status to 'Inactive' directly in the new record
         :NEW.Status := 'Inactive';
+    ELSE
+        -- Set the status to 'Active' if End_Date is after the current system date
+        :NEW.Status := 'Active';
     END IF;
 END;
 /
+
 -- ––––––––––––––––––––
 --  TESTING TRIGGER
 -- ––––––––––––––––––––
