@@ -81,43 +81,41 @@ ORDER BY REVENUE_LOSS;
 -- ===========================
 
 SELECT 
-    -- link the first and last names of the client to display the full name
+    -- Concatenate the first and last names to create the full name
     CL.FIRST_NAME || ' ' || CL.LAST_NAME AS CLIENT_NAME,
     
-    -- Number of gym visits in the last 30 days; if null, show as 0
-    NVL(CUR.GYM_VISITS, 0) AS GYM_VISITS,
+    -- Use GYM_VISITS directly since it's guaranteed to be non-NULL
+    CUR.GYM_VISITS AS GYM_VISITS,
     
-    -- Calculate progress percentage towards the goal of 21 visits in the last 30 days,
-    -- cap the result at 100%
-    TRUNC(LEAST(NVL(100 * (CUR.GYM_VISITS / 21), 0), 100)) || '%' AS PROGRESS,
+    -- Progress percentage capped at 100%
+    TRUNC(LEAST(100 * (CUR.GYM_VISITS / 21), 100)) || '%' AS PROGRESS,
     
-    -- Number of gym visits in the previous 31–60 days; if null, show as 0
-    NVL(LAST.GYM_VISITS, 0) AS LAST_MONTH_GYM_VISITS,
+    -- Last month's gym visits
+    LAST.GYM_VISITS AS LAST_MONTH_GYM_VISITS,
     
-    -- Calculate progress percentage for 31–60 days ago, cap at 100%, and format with a '%'
-    TRUNC(LEAST(NVL(100 * (LAST.GYM_VISITS / 21), 0), 100)) || '%' AS LAST_MONTH_PROGRESS,
+    -- Progress percentage for the last month, capped at 100%
+    TRUNC(LEAST(100 * (LAST.GYM_VISITS / 21), 100)) || '%' AS LAST_MONTH_PROGRESS,
     
-    -- List of visit dates in the last 30 days; if null, display 'No Visits'
-    NVL(CUR.VISIT_DATES, 'No Visits') AS VISIT_DATES
+    -- If no visit dates, use 'No Visits' explicitly
+    CASE WHEN CUR.VISIT_DATES IS NULL THEN 'No Visits' ELSE CUR.VISIT_DATES END AS VISIT_DATES
 FROM CLIENTS CL
--- Join with a subquery that calculates gym visits and visit dates for the last 30 days
+-- Join for gym visits in the last 30 days
 LEFT JOIN (
     SELECT 
-        GA.CLIENT_ID, -- Group by client ID
-        COUNT(*) AS GYM_VISITS, -- Count the number of visits
-        -- Create a comma-separated list of visit dates, formatted as DD-MM-YYYY
+        GA.CLIENT_ID, 
+        COUNT(*) AS GYM_VISITS, 
         LISTAGG(TO_CHAR(GA.CHECK_IN, 'DD-MM-YYYY'), ', ') WITHIN GROUP (ORDER BY GA.CHECK_IN) AS VISIT_DATES
     FROM GYM_ATTENDANCE GA
-    WHERE GA.CHECK_IN >= SYSDATE - 30 -- Only consider visits in the last 30 days
-    GROUP BY GA.CLIENT_ID -- Group by client ID to summarize visits per client
-) CUR ON CL.CLIENT_ID = CUR.CLIENT_ID -- Match the client ID to join with the CLIENTS table
-
--- Join with another subquery that calculates gym visits for 31–60 days ago
+    WHERE GA.CHECK_IN >= SYSDATE - 30
+    GROUP BY GA.CLIENT_ID
+) CUR ON CL.CLIENT_ID = CUR.CLIENT_ID
+-- Join for gym visits 31–60 days ago
 LEFT JOIN (
     SELECT 
-        GA.CLIENT_ID, -- Group by client ID
-        COUNT(*) AS GYM_VISITS -- Count the number of visits in the specified time range
+        GA.CLIENT_ID, 
+        COUNT(*) AS GYM_VISITS
     FROM GYM_ATTENDANCE GA
-    WHERE GA.CHECK_IN BETWEEN SYSDATE - 60 AND SYSDATE - 31 -- Time range: 31–60 days ago
-    GROUP BY GA.CLIENT_ID -- Group by client ID to summarize visits per client
-) LAST ON CL.CLIENT_ID = LAST.CLIENT_ID -- Match the client ID to join with the CLIENTS table;
+    WHERE GA.CHECK_IN BETWEEN SYSDATE - 60 AND SYSDATE - 31
+    GROUP BY GA.CLIENT_ID
+) LAST ON CL.CLIENT_ID = LAST.CLIENT_ID
+ORDER BY CLIENT_NAME;
