@@ -14,7 +14,7 @@ BEGIN
     IF client_category = 'Guest' THEN
         RAISE_APPLICATION_ERROR(-20001, 'Guests cannot have memberships.');
     END IF;
-END;
+END trg_check_membership_client;
 /
 
 -- Trigger: Update discount usage and revenue loss in Discounts table
@@ -29,7 +29,7 @@ BEGIN
             Revenue_Loss = Revenue_Loss + :NEW.Discount_Amount
         WHERE Discount_ID = :NEW.Discount_ID;
     END IF;
-END;
+END trg_update_discount_usage;
 /
 
 -- Trigger: Ensure Discount_Amount does not exceed £70
@@ -41,7 +41,7 @@ BEGIN
     IF :NEW.Discount_Amount > 70 THEN
         RAISE_APPLICATION_ERROR(-20003, 'Discount amount cannot exceed £70.');
     END IF;
-END;
+END trg_limit_discount_amount;
 /
 
 -- Trigger: Validate Membership Start_Date and End_Date
@@ -53,7 +53,7 @@ BEGIN
     IF :NEW.End_Date <= :NEW.Start_Date THEN
         RAISE_APPLICATION_ERROR(-20004, 'End_Date must be later than Start_Date.');
     END IF;
-END;
+END trg_validate_membership_dates;
 /
 
 
@@ -74,7 +74,7 @@ BEGIN
     IF v_count > 0 THEN
         RAISE_APPLICATION_ERROR(-20009, 'Client has already confirmed this class.');
     END IF;
-END;
+END trg_prevent_duplicate_bookings;
 /
 
 -- Trigger: Ensure valid Trainer assignments
@@ -94,7 +94,7 @@ BEGIN
     IF v_trainer_count = 0 THEN
         RAISE_APPLICATION_ERROR(-20010, 'Invalid Trainer_ID: No such trainer exists.');
     END IF;
-END;
+END trg_validate_trainer_assignment;
 /
 
 
@@ -119,22 +119,7 @@ BEGIN
     ELSIF :NEW.Transaction_ID IS NULL THEN
         RAISE_APPLICATION_ERROR(-20013, 'Transaction_ID cannot be NULL for this payment method or status.');
     END IF;
-END;
-/
-
-
--- Trigger to increase slots for cancelled bookings
-CREATE OR REPLACE TRIGGER trg_increase_slots_on_cancel
-AFTER UPDATE OF Status ON Class_Bookings
-FOR EACH ROW
-BEGIN
-    -- Check only for bookings updated to "Canceled"
-    IF :NEW.Status = 'Canceled' THEN
-        UPDATE Fitness_Classes
-        SET Available_Slots = Available_Slots + 1
-        WHERE Class_ID = :NEW.Class_ID;
-    END IF;
-END trg_increase_slots_on_cancel;
+END trg_default_transaction_id;
 /
 
 
@@ -147,25 +132,25 @@ BEGIN
     UPDATE Clients
     SET Gym_Visits = Gym_Visits + 1
     WHERE Client_ID = :NEW.Client_ID;
-END;
+END IncrementGymVisits;
 /
 
 -- Trigger to prevent class booking if client's membership is inactive
--- CREATE OR REPLACE TRIGGER prevent_class_booking_inactive_membership
--- BEFORE INSERT ON Class_Bookings
--- FOR EACH ROW
--- DECLARE
---     v_membership_status VARCHAR2(20);
--- BEGIN
---     -- Check client's membership status before booking
---     SELECT Status
---     INTO v_membership_status
---     FROM Membership
---     WHERE Client_ID = :NEW.Client_ID;
+CREATE OR REPLACE TRIGGER prevent_class_booking_inactive_membership
+BEFORE INSERT ON Class_Bookings
+FOR EACH ROW
+DECLARE
+    v_membership_status VARCHAR2(20);
+BEGIN
+    -- Check client's membership status before booking
+    SELECT Status
+    INTO v_membership_status
+    FROM Membership
+    WHERE Client_ID = :NEW.Client_ID;
 
---     -- Prevent booking if membership is inactive
---     IF v_membership_status = 'Inactive' THEN
---         RAISE_APPLICATION_ERROR(-20001, 'Cannot make a booking. Client membership is inactive.');
---     END IF;
--- END prevent_class_booking_inactive_membership;
--- /
+    -- Prevent booking if membership is inactive
+    IF v_membership_status = 'Inactive' 
+        THEN RAISE_APPLICATION_ERROR(-20001, 'Cannot make a booking. Client membership is inactive.');
+    END IF;
+END prevent_class_booking_inactive_membership;
+/
