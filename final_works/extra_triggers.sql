@@ -122,29 +122,6 @@ BEGIN
 END;
 /
 
--- Trigger to raise error if no slots are available
-CREATE OR REPLACE TRIGGER trg_raise_error_no_slots
-BEFORE INSERT OR UPDATE OF Status ON Class_Bookings
-FOR EACH ROW
-DECLARE
-    v_available_slots NUMBER;
-BEGIN
-    -- Check only for confirmed bookings
-    IF :NEW.Status = 'Confirmed' THEN
-        -- Retrieve the current number of available slots
-        SELECT Available_Slots 
-        INTO v_available_slots
-        FROM Fitness_Classes
-        WHERE Class_ID = :NEW.Class_ID;
-
-        -- Raise an error if no slots are available
-        IF v_available_slots <= 0 THEN
-            RAISE_APPLICATION_ERROR(-20001, 'No slots available for this class');
-        END IF;
-    END IF;
-END trg_raise_error_no_slots;
-/
-
 
 -- Trigger to increase slots for cancelled bookings
 CREATE OR REPLACE TRIGGER trg_increase_slots_on_cancel
@@ -160,20 +137,6 @@ BEGIN
 END trg_increase_slots_on_cancel;
 /
 
-
--- Trigger to decrease slots for confirmed bookings
-CREATE OR REPLACE TRIGGER trg_decrease_slots_on_confirm
-AFTER INSERT OR UPDATE OF Status ON Class_Bookings
-FOR EACH ROW
-BEGIN
-    -- Check only for confirmed bookings
-    IF :NEW.Status = 'Confirmed' THEN
-        UPDATE Fitness_Classes
-        SET Available_Slots = Available_Slots - 1
-        WHERE Class_ID = :NEW.Class_ID;
-    END IF;
-END trg_decrease_slots_on_confirm;
-/
 
 -- Trigger to increment gym_visits every time the client registers check_in in gym_attendance
 CREATE OR REPLACE TRIGGER IncrementGymVisits
