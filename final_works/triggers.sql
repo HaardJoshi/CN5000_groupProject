@@ -19,10 +19,11 @@ END;
 --  TESTING TRIGGER
 -- ––––––––––––––––––––
 
--- Insert a test membership record
+-- Insert a test client record
 INSERT INTO Clients (Client_ID, First_Name, Last_Name, Client_Category, Relationship, Contact, Emergency_Contact, Email, Address)
 VALUES (00000021, 'Dhara', 'Parekh', 'Member', Null, '+447123456789', '+447987654321', 'd.parekh@uel.ac.uk', 'University Way, London, E16 2RD');
 
+-- Insert a test membership record
 INSERT INTO Membership (Membership_ID, Client_ID, Plan_Type, Start_Date, End_Date, Status, Price) 
 VALUES (00000111, 00000021, 'Platinum', to_date('2024-10-20', 'YYYY-MM-DD'), to_date('2025-05-10', 'YYYY-MM-DD'), 'Active', 999);
 
@@ -78,33 +79,27 @@ END trg_dec_slots_or_error;
 -- ––––––––––––––––––––
 --  TESTING TRIGGER
 -- ––––––––––––––––––––
--- Insert a fitness class with no available slots
+-- Insert a fitness class with coupple slots
 INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots)
-VALUES (11000000, 'Trigger-Test Class', 'Yoga', SYSDATE + 1, 500, 1);
+VALUES (11000000, 'Trigger-Test Class', 'Yoga', SYSDATE + 1, 500, 2);
 
--- Attempt to insert a booking for the class with no slots
+-- insert a booking for the class with 2 slots
 INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status)
 VALUES (11000016,11000000, 20, 'Confirmed');
 
+-- check the available slots to observe decrement
 SELECT Available_Slots FROM Fitness_Classes WHERE Class_ID = 11000000;
 
+-- insert couple more bookings
 INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status)
 VALUES (11000017,11000000, 21, 'Confirmed');
 
+-- check again
 SELECT Available_Slots FROM Fitness_Classes WHERE Class_ID = 11000000;
--- ––––––––––––––––––––
---  TESTING TRIGGER-pt2
--- ––––––––––––––––––––
--- Insert new fitness class
--- INSERT INTO Fitness_Classes (Class_ID, Class_Name, Class_Type, Schedule, Instructor_ID, Available_Slots)
--- VALUES (12000000, 'Trigger-Test Class2', 'Yoga', SYSDATE + 1, 500, 5);
 
--- insert a booking
--- INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status)
--- VALUES (11000017,12000000, 21, 'Confirmed');
-
--- Check the updated slot count
--- SELECT Available_Slots FROM Fitness_Classes WHERE Class_ID = 12000000;
+--try to add more booking
+INSERT INTO Class_Bookings (Booking_ID, Class_ID, Client_ID, Status)
+VALUES (11000018,11000000, 19, 'Confirmed');
 
 
 -- ====================
