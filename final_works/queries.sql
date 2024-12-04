@@ -89,26 +89,27 @@ SELECT
     CL.FIRST_NAME || ' ' || CL.LAST_NAME AS CLIENT_NAME,
     
     -- Use GYM_VISITS directly since it's guaranteed to be non-NULL
-    CUR.GYM_VISITS AS GYM_VISITS,
+    CUR.GYM_VISITS AS NOV_GYM_VISITS,
     
     -- Progress percentage capped at 100%
-    TRUNC(LEAST(100 * (CUR.GYM_VISITS / 21), 100)) || '%' AS PROGRESS,
+    TRUNC(LEAST(100 * (CUR.GYM_VISITS / 21), 100)) || '%' AS NOV_PROGRESS,
     
     -- Last month's gym visits
-    LAST.GYM_VISITS AS LAST_MONTH_GYM_VISITS,
+    LAST.GYM_VISITS AS OCT_GYM_VISITS,
     
     -- Progress percentage for the last month, capped at 100%
-    TRUNC(LEAST(100 * (LAST.GYM_VISITS / 21), 100)) || '%' AS LAST_MONTH_PROGRESS,
+    TRUNC(LEAST(100 * (LAST.GYM_VISITS / 21), 100)) || '%' AS OCT_PROGRESS,
     
     -- If no visit dates, use 'No Visits' explicitly
-    CASE WHEN CUR.VISIT_DATES IS NULL THEN 'No Visits' ELSE CUR.VISIT_DATES END AS VISIT_DATES
+    CASE WHEN CUR.NOV_VISIT_DATES IS NULL THEN 'No Visits' ELSE CUR.NOV_VISIT_DATES END AS NOV_VISIT_DATES
+
 FROM CLIENTS CL
 -- Join for gym visits in the last 30 days
 LEFT JOIN (
     SELECT 
         GA.CLIENT_ID, 
         COUNT(*) AS GYM_VISITS, 
-        LISTAGG(TO_CHAR(GA.CHECK_IN, 'DD-MM-YYYY'), ', ') WITHIN GROUP (ORDER BY GA.CHECK_IN) AS VISIT_DATES
+        LISTAGG(TO_CHAR(GA.CHECK_IN, 'DD-MM-YYYY'), ', ') WITHIN GROUP (ORDER BY GA.CHECK_IN) AS NOV_VISIT_DATES
     FROM GYM_ATTENDANCE GA
     WHERE GA.CHECK_IN >= SYSDATE - 30
     GROUP BY GA.CLIENT_ID
