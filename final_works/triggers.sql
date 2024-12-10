@@ -32,7 +32,7 @@ SELECT * FROM Membership WHERE Client_ID = 21;
 
 -- Update the membership end date to trigger the condition
 UPDATE Membership
-SET End_Date = to_date('2024-12-04', 'YYYY-MM-DD')
+SET End_Date = to_date('2024-12-05', 'YYYY-MM-DD')
 WHERE Client_ID = 21;
 
 -- Check the result
@@ -126,7 +126,7 @@ SELECT * FROM Membership WHERE Client_ID = 21;
 
 -- Update the membership end date to trigger the condition
 UPDATE Membership
-SET End_Date = to_date('2024-12-10', 'YYYY-MM-DD')
+SET End_Date = to_date('2024-12-15', 'YYYY-MM-DD')
 WHERE Client_ID = 21;
 
 -- Check the result
